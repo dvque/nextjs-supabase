@@ -1,6 +1,7 @@
 'use client';
 
 import { supabase } from "@/lib/supabase";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Login() {
@@ -13,7 +14,7 @@ export default function Login() {
         password: ''
     })
 
-
+    const router = useRouter();
 
     const login = async () => {
         console.log('data', data)
@@ -24,7 +25,7 @@ export default function Login() {
             })
 
             if (data) {
-                console.log('data', data)
+                router.refresh();
             }
         }
         catch (error) {
